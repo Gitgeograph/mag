@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}
+{% endblock title %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 gap-2 mt-3 mx-2">
+  {% if products %}
+    {% for product in products %}
+      <div class='col'>
+        <div class="card">
+          <div id="carouselExampleControlsNoTouching{{product.id}}" class="carousel slide" data-bs-touch="false" data-bs-interval="false">
+            <div class="carousel-inner">
+              {% for image in product.product_image.all %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ image.image.url }}" class="d-block w-100" alt="...">
+              </div>
+              {% endfor %}
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching{{product.id}}" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching{{product.id}}" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            {% comment %} <p class="card-text">{{ product.description}}</p> {% endcomment %}
+            <a href="{% url 'product' product.id %}" class="btn btn-primary">В корзину</a>
+          </div>
+        </div>
+      </div>                       
+    {% endfor %}
+  {% else %}
+    <h2>No products</h2>
+  {% endif %}
+</div>
+{% endblock content %}

@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      {% comment %} <a class="navbar-brand" href="{% url 'products' %}">OLiRiNSKAYA</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> {% endcomment %}
+
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Каталог
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-dark">
+            {% for category in categories %}
+              <li><a class="dropdown-item" href="{% url 'category' category.id %}">{{ category.name }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="navbar-brand justify-content-center">
+        <a class="navbar-brand" href="{% url 'products' %}">OLiRiNSKAYA</a>
+      </div>
+
+      <div class="navbar-nav">
+        <a class='nav-link' href='#'>Navbar</a>
+        <a class='nav-link' href='#'>Navbar</a>
+      </div>
+
+    </div>
+  </nav>
